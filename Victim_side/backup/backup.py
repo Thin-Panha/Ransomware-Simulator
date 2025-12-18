@@ -1,8 +1,9 @@
 import os
 import shutil
 
-DATA_FOLDER = "../Data"
-BACKUP_FOLDER = "../Data_Backup"
+BASE_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+DATA_FOLDER = os.path.join(BASE_PATH, "Data")
+BACKUP_FOLDER = os.path.join(BASE_PATH, "Data_Backup")
 
 def backup_files():
     try:
@@ -18,13 +19,18 @@ def backup_files():
             # Create backup folder if missing
             if not os.path.exists(BACKUP_FOLDER):
                 os.makedirs(BACKUP_FOLDER)
+
         for filename in files:
             src = os.path.join(DATA_FOLDER, filename)
             dst = os.path.join(BACKUP_FOLDER, filename)
 
             try:
+                if filename.endswith(".enc"):
+                    print(f"[!] Skipping already encrypted file: {filename}")
+                    continue
+                
                 shutil.copy2(src, dst)
-                print(f"[+] Backed up: {filename}")
+                print(f"[+] Backed up: {filename}") # not
             except Exception as e:
                 print(f"[ERROR] Failed to back up {filename}: {e}")
 

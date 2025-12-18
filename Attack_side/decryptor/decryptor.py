@@ -3,8 +3,11 @@ from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 from cryptography.hazmat.primitives import serialization, hashes
 from cryptography.hazmat.primitives.asymmetric import padding
 
-DATA_FOLDER = "../../Victim_side/Data"
-PRIVATE_KEY_FILE = "asym_private_key.pem"
+# DATA_FOLDER = "../../Victim_side/Data"
+BASE_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "Victim_side"))
+DATA_FOLDER = os.path.join(BASE_PATH, "Data")
+# PRIVATE_KEY_FILE = "asym_private_key.pem"
+PRIVATE_KEY_FILE = os.path.join(os.path.dirname(__file__), "asym_private_key.pem")
 
 def load_rsa_private_key():
     try:
@@ -15,11 +18,12 @@ def load_rsa_private_key():
         return private_key
 
     except FileNotFoundError:
-        print("[ERROR] Private key file not found!")
-        exit()
+        # print("[ERROR] Private key file not found!")
+        # exit()
+        return None
     except Exception as e:
         print(f"[ERROR] Failed to load private key: {e}")
-        exit()
+        # exit()
 
 
 def decrypt_file(filepath, filename, private_key):
