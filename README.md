@@ -72,6 +72,7 @@ This simulator is intended for:
 ```
 Ransomware-Simulator/
 │
+├── .gitignore                  # Git ignore rules (keys, venv, backups, state)
 ├── main.py                     # Main simulator menu & state manager
 ├── simulator_state.json        # Auto-generated state file
 ├── requirements.txt            # Python dependencies
