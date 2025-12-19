@@ -2,7 +2,8 @@ venv/
 
 simulator_state.json
 
-Victim_side\Data_Backup
+# Ignore victim backup data (generated files)
+Victim_side/Data_Backup/
 
 **/*.pem 
 
