@@ -1,4 +1,5 @@
 # 🛡️ Ransomware Simulator (Educational Project)
+![Version](img.shields.io)
 
 > **⚠️ Disclaimer**
 > This project is **STRICTLY FOR EDUCATIONAL PURPOSES**.
