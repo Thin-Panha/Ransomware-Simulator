@@ -2,6 +2,10 @@ venv/
 
 simulator_state.json
 
+Victim_side\Data_Backup
+
+**/*.pem 
+
 # Created by https://www.toptal.com/developers/gitignore/api/python
 # Edit at https://www.toptal.com/developers/gitignore?templates=python
 
