@@ -129,7 +129,16 @@ The menu dynamically adapts based on the detected file state.
 
 ## ⚙️ Installation & Setup
 
-### ✅ 1. Create Virtual Environment (Recommended)
+### 📥1. Cloning the Repository
+
+Clone the project from GitHub:
+
+```bash
+git clone https://github.com/Thin-Panha/Ransomware-Simulator.git
+cd Ransomware-Simulator
+```
+
+### ✅ 2. Create Virtual Environment (Recommended)
 
 ```bash
 python -m venv venv
@@ -151,21 +160,15 @@ source venv/bin/activate
 
 ---
 
-### ✅ 2. Install Dependencies
+### ✅ 3. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-**requirements.txt** (example):
-
-```
-cryptography
-```
-
 ---
 
-### ▶️ 3. Run the Simulator
+### ▶️ 4. Run the Simulator
 
 ```bash
 python main.py
