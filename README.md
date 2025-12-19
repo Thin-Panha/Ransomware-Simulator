@@ -305,3 +305,30 @@ If you are studying cryptography or cybersecurity, this project demonstrates:
 * Responsible security research
 
 > **Stay curious. Stay ethical. Stay safe.** 🧠🔐
+
+---
+
+## 📄 Project Report
+
+A detailed academic report explaining the **design, cryptographic concepts, workflow, and security considerations** of this project is available here:
+
+👉 **[Download Project Report (PDF)](./Ransomware_Simulator_report.pdf)**
+
+> 📌 *Note:* Screenshots of program execution, encryption/decryption results, and file states are included in the report.
+
+---
+
+## 👤 Creator
+
+**THIN PANHA**  
+🎓 Student at **Cambodia Academy of Digital Technology (CADT)**  
+📚 Major: **Telecommunications & Networking**  
+🔐 Specialization: **Cybersecurity**  
+🧪 Generation: **GEN 10**
+
+📍 LinkedIn: [Panha Thin](https://www.linkedin.com/in/panha-thin/)
+
+This project was developed as part of a **cryptography and cybersecurity learning initiative**, focusing on understanding ransomware internals in a **safe, ethical, and controlled environment**.
+
+> **Stay curious. Stay ethical. Stay safe.** 🧠🔐
+---
