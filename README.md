@@ -316,7 +316,7 @@ A detailed academic report explaining the **design, cryptographic concepts, work
 
 ---
 
-## 👤 Creator
+## 👤 Author 
 
 **THIN PANHA**  
 🎓 Student at **Cambodia Academy of Digital Technology (CADT)**  
