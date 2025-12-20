@@ -304,8 +304,6 @@ If you are studying cryptography or cybersecurity, this project demonstrates:
 * Safe malware simulation practices
 * Responsible security research
 
-> **Stay curious. Stay ethical. Stay safe.** 🧠🔐
-
 ---
 
 ## 📄 Project Report

